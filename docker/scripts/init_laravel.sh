@@ -6,8 +6,16 @@
 # docker exec -it jenkins bash -c "bash docker/scripts/init_jenkins.sh"
 
 # cd /var/www/html
-docker exec -it docker_man-php bash -c "composer install --ignore-platform-reqs --no-scripts"
-docker exec -it docker_man-php bash -c "php artisan key:generate"
-docker exec -it docker_man-php bash -c "php artisan optimize:clear"
-docker exec -it docker_man-php bash -c "php artisan migrate:fresh --seed"
 
+
+if [ -f src/.env ]
+then
+  export $(echo $(cat src/.env | sed 's/#.*//g'| xargs) | envsubst)
+
+  docker exec -it ${APP_NAME}-php bash -c "composer install --ignore-platform-reqs --no-scripts"
+  docker exec -it ${APP_NAME}-php bash -c "php artisan key:generate"
+  docker exec -it ${APP_NAME}-php bash -c "php artisan optimize:clear"
+  docker exec -it ${APP_NAME}-php bash -c "php artisan migrate:fresh --seed"
+else
+  echo ".env not found"
+fi

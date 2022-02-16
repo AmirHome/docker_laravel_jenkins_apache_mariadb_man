@@ -18,18 +18,18 @@
 ## Requirement
 Firstly install docker and docker-compose:
 ```sh
-    bash ./docker/scripts/install_docker.sh
+bash ./docker/scripts/install_docker.sh
 ```
 
 ## Warning
 Remove all docker resources and reset permission:
 ```sh
-    bash docker/scripts/remove_docker_resources.sh
-    sudo rm -rf ./docker_data/*
-    sudo chown 1000:1000 ./docker_data/ -R
-    sudo systemctl stop apache2
-    sudo systemctl stop mysql
-    sudo rm -rf ./src/*
+bash docker/scripts/remove_docker_resources.sh
+sudo rm -rf ./docker_data/*
+sudo chown 1000:1000 ./docker_data/ -R
+sudo systemctl stop apache2
+sudo systemctl stop mysql
+sudo rm -rf ./src/*
 ```
 
 ## Install All Containers
@@ -39,23 +39,23 @@ Install **Laravel** with composer
 -   Set .env.example variables like APP_NAME=docker_man
 
 ```sh
-    composer create-project laravel/laravel src
-    cp .env.example ./src/.env
+composer create-project laravel/laravel src
+cp .env.example ./src/.env
 ```
 
 **Remove all** docker resources and reset permission:
 ```sh
-    docker-compose --env-file ./src/.env up --build -d
+docker-compose --env-file ./src/.env up --build -d
 ```
 
 **Initialize** Laravel Container
 ```sh
-    bash docker/scripts/init_laravel.sh
+bash docker/scripts/init_laravel.sh
 ```
 
 Show init Password in **Jenkins** Container
 ```sh
-    bash docker/scripts/init_jenkins.sh
+bash docker/scripts/init_jenkins.sh
 ```
 
 ## Enjoyment
@@ -65,7 +65,7 @@ Show init Password in **Jenkins** Container
 
 ## Connect to GitHub from Jenkins
 ```sh
-   ssh-keygen -t rsa -f AmirJenkinsKeyLocal
+ssh-keygen -t rsa -f AmirJenkinsKeyLocal
 ```
 
 ## License
