@@ -29,21 +29,27 @@ Remove all docker resources and reset permission:
 ```
 
 ## Install All Containers
-Remove all docker resources and reset permission:
-```sh
-    docker-compose up --build -d
-```
 
-Install Laravel with composer
+Install **Laravel** with composer
+
+-   Set .env.example variables like APP_NAME=docker_man
+
 ```sh
     composer create-project laravel/laravel src
-```
-Initialize Laravel Container
-```sh
-    docker exec -it hibes_admin-php-app bash -c "bash docker/scripts/init_laravel.sh"
+    cp .env.example ./src/.env
 ```
 
-Show init Password in Jenkins Container
+**Remove all** docker resources and reset permission:
+```sh
+    docker-compose --env-file ./src/.env up --build -d
+```
+
+**Initialize** Laravel Container
+```sh
+    docker exec -it docker_man-php bash -c "bash docker/scripts/init_laravel.sh"
+```
+
+Show init Password in **Jenkins** Container
 ```sh
     docker exec -it jenkins bash -c "cat /var/jenkins_home/secrets/initialAdminPassword"
 ```

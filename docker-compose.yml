@@ -10,7 +10,7 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./:/var/www/html
+            - ./src:/var/www/html
         networks:
             - net
         depends_on:
