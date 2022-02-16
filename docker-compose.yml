@@ -1,0 +1,58 @@
+version: '3.9'
+
+services:
+### Webserver Container ###################
+    php-app:
+        build:
+            context: .
+            dockerfile: docker/Dockerfile
+        container_name: ${APP_NAME}-php
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+        networks:
+            - net
+        depends_on:
+            - mysql
+
+### MySQL Container ########################
+    mysql:
+        image: mariadb:latest
+        container_name: mysql
+        restart: unless-stopped
+        ports:
+            - ${DB_PORT}:3306
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+#            - ${PWD}/docker_data/mysql:/var/lib/mysql
+            - mysql:/var/lib/mysql
+        networks:
+            - net
+#        entrypoint: sh -c "sleep 30 && php /var/www/html/artisan migrate:refresh --seed"
+
+### Jenkins Container ###################
+    jenkins:
+      container_name: jenkins
+      image: jenkins/jenkins
+      ports:
+        - "8080:8080"
+      volumes:
+        - ${PWD}/docker_data/jenkins_home:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock
+      networks:
+        - net-jenkins
+
+networks:
+  net:
+    name: ${APP_NAME}-net
+    driver: bridge
+  net-jenkins:
+
+volumes:
+  mysql:
