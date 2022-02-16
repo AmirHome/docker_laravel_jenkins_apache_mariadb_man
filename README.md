@@ -25,7 +25,11 @@ Firstly install docker and docker-compose:
 Remove all docker resources and reset permission:
 ```sh
     bash docker/scripts/remove_docker_resources.sh
+    sudo rm -rf ./docker_data/*
     sudo chown 1000:1000 ./docker_data/ -R
+    sudo systemctl stop apache2
+    sudo systemctl stop mysql
+    sudo rm -rf ./src/*
 ```
 
 ## Install All Containers
@@ -54,6 +58,10 @@ Show init Password in **Jenkins** Container
     docker exec -it jenkins bash -c "cat /var/jenkins_home/secrets/initialAdminPassword"
 ```
 
-## License
+## Enjoyment
 
+-  *[http://docker_man.loc](http://docker_man.loc)* Laravel in localhost
+-  *[http://docker_man.loc:8080](http://docker_man.loc:8080)* Jenkins in localhost of port 8080
+
+## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
