@@ -50,12 +50,12 @@ Install **Laravel** with composer
 
 **Initialize** Laravel Container
 ```sh
-    docker exec -it docker_man-php bash -c "bash docker/scripts/init_laravel.sh"
+    bash docker/scripts/init_laravel.sh
 ```
 
 Show init Password in **Jenkins** Container
 ```sh
-    docker exec -it jenkins bash -c "cat /var/jenkins_home/secrets/initialAdminPassword"
+    bash docker/scripts/init_jenkins.sh
 ```
 
 ## Enjoyment
