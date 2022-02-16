@@ -63,5 +63,10 @@ Show init Password in **Jenkins** Container
 -  *[http://docker_man.loc](http://docker_man.loc)* Laravel in localhost
 -  *[http://docker_man.loc:8080](http://docker_man.loc:8080)* Jenkins in localhost of port 8080
 
+## Connect to GitHub from Jenkins
+```sh
+   ssh-keygen -t rsa -f AmirJenkinsKeyLocal
+```
+
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
