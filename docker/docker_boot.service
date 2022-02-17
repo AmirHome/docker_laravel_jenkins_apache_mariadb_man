@@ -1,0 +1,12 @@
+[Unit]
+Description=docker boot php-app, mysql and jenkins containers by amir
+After=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/home/ubuntu/docker_man
+ExecStart=/usr/local/bin/docker-compose --env-file ./src/.env -f /home/ubuntu/docker_man/docker-compose.yml up -d --build --remove-orphans
+
+[Install]
+WantedBy=multi-user.target

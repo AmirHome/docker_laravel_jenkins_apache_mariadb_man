@@ -7,6 +7,7 @@ services:
             context: .
             dockerfile: docker/Dockerfile
         container_name: ${APP_NAME}-php
+        restart: always
         ports:
             - "80:80"
         volumes:
@@ -20,7 +21,7 @@ services:
     mysql:
         image: mariadb:latest
         container_name: mysql
-        restart: unless-stopped
+        restart: always
         ports:
             - ${DB_PORT}:3306
         environment:
@@ -39,6 +40,7 @@ services:
 ### Jenkins Container ###################
     jenkins:
       container_name: jenkins
+      restart: always
       image: jenkins/jenkins
       ports:
         - "8080:8080"
