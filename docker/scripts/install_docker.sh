@@ -20,6 +20,7 @@ sudo chmod +x /usr/bin/docker-compose
 docker -v
 docker-compose -v
 
+# Create and enable Docker Boot Service
 sudo cp -v ./docker/docker_boot.service /etc/systemd/system
 sudo systemctl enable docker_boot.service
 sudo systemctl start docker_boot.service
@@ -27,3 +28,5 @@ sudo systemctl status docker_boot.service
 
 sudo mkdir ./docker_data/jenkins_home
 sudo chown 1000:1000 ./docker_data/ -R
+
+sudo docker inspect mysql

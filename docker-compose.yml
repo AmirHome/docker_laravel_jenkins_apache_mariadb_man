@@ -31,7 +31,7 @@ services:
             MYSQL_USER: ${DB_USERNAME}
             MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
         volumes:
-#            - ${PWD}/docker_data/mysql:/var/lib/mysql
+#            - ./docker_data/mysql:/var/lib/mysql
             - mysql:/var/lib/mysql
         networks:
             - net
@@ -45,7 +45,7 @@ services:
       ports:
         - "8080:8080"
       volumes:
-        - ${PWD}/docker_data/jenkins_home:/var/jenkins_home
+        - ./docker_data/jenkins_home:/var/jenkins_home
         - /var/run/docker.sock:/var/run/docker.sock
       networks:
         - net-jenkins

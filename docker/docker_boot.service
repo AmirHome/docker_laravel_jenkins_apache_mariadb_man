@@ -1,12 +1,12 @@
 [Unit]
-Description=docker boot php-app, mysql and jenkins containers by amir
+Description=docker boot php-app, mysql and jenkins containers by amir. for quickly booting I remove --build option from docker-compose
 After=docker.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 WorkingDirectory=/home/ubuntu/docker_man
-ExecStart=/usr/local/bin/docker-compose --env-file ./src/.env -f /home/ubuntu/docker_man/docker-compose.yml up -d --build --remove-orphans
+ExecStart=/usr/local/bin/docker-compose --env-file /home/ubuntu/docker_man/src/.env -f /home/ubuntu/docker_man/docker-compose.yml up -d --remove-orphans
 
 [Install]
 WantedBy=multi-user.target
