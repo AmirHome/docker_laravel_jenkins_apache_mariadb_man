@@ -39,22 +39,25 @@ services:
 
 ### Jenkins Container ###################
     jenkins:
+      build:
+        context: .
+        dockerfile: docker/Dockerfile_jenkins
       container_name: jenkins
       restart: always
-      image: jenkins/jenkins
+
       ports:
         - "8080:8080"
       volumes:
         - ./docker_data/jenkins_home:/var/jenkins_home
         - /var/run/docker.sock:/var/run/docker.sock
       networks:
-        - net-jenkins
+        - net
 
 networks:
   net:
     name: ${APP_NAME}-net
     driver: bridge
-  net-jenkins:
+
 
 volumes:
   mysql:

@@ -14,10 +14,12 @@ sudo apt update
 sudo apt install docker-ce docker-ce-cli containerd.io -y
 sudo usermod -a -G docker ubuntu
 
+docker -v
+
+
 sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
 sudo chmod +x /usr/bin/docker-compose
 
-docker -v
 docker-compose -v
 
 # Create and enable Docker Boot Service
