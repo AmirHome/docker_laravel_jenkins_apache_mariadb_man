@@ -27,6 +27,7 @@ Remove all docker resources and reset permission:
 bash docker/scripts/remove_docker_resources.sh
 sudo rm -rf ./docker_data/*
 sudo chown 1000:1000 ./docker_data/ -R
+sudo chown 1000:1000 /var/run/docker.sock
 sudo systemctl stop apache2
 sudo systemctl stop mysql
 sudo rm -rf ./src/*
