@@ -29,6 +29,7 @@ RUN chmod +x /usr/bin/docker-compose
 
 # RUN docker-compose -v
 
+COPY .env.main /src/.env
 
 # use your users $UID and $GID below
 RUN usermod -aG docker jenkins

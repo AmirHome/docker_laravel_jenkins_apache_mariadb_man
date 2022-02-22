@@ -48,6 +48,8 @@ services:
       ports:
         - "8080:8080"
       volumes:
+        - ./docker/scripts:/home/scripts
+        - ./docker/jenkinsfiles:/home/jenkinsfiles
         - ./docker_data/jenkins_home:/var/jenkins_home
         - /var/run/docker.sock:/var/run/docker.sock
       networks:
