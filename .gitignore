@@ -62,4 +62,4 @@ Thumbs.db
 *.wmv
 
 /composer.phar
-/docker_data/*
+
