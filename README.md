@@ -42,13 +42,13 @@ Install **Laravel** with composer
 -   Set .env.example variables like APP_NAME=docker_man
 
 ```sh
-composer create-project laravel/laravel src
-cp .env.main ./src/.env
+composer create-project laravel/laravel
+cp .env.main .env
 ```
 
 **Remove all** docker resources and reset permission:
 ```sh
-docker-compose --env-file ./src/.env up --build -d
+docker-compose --env-file .env up --build -d
 ```
 
 **Initialize** Laravel Container
