@@ -44,12 +44,6 @@ cp .env.main .env
 
 ## Install All Containers
 
-Install **Laravel** with composer
-
-```sh
-composer create-project laravel/laravel
-```
-
 **Remove all** docker resources and reset permission:
 ```sh
 docker-compose --env-file .env up --build -d

@@ -1,8 +1,8 @@
 node {
 
-    stage('Clone Migrate Laravel') {
+    stage('Initial Migrate Laravel') {
 
-            sh 'sh /home/scripts/clone_migrate.sh'
+            sh 'sh /home/scripts/init_migrate.sh'
 
     }
 }

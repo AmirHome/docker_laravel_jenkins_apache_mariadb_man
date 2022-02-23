@@ -42,7 +42,7 @@ services:
       build:
         context: .
         dockerfile: docker/Dockerfile_jenkins
-      container_name: jenkins
+      container_name: ${APP_NAME}-jenkins
       restart: always
 
       ports:

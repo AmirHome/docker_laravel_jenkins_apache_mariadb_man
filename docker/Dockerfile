@@ -20,6 +20,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install zip \
+    && docker-php-ext-install exif \
     && docker-php-source delete \
     && apt-get autoclean -y \
     && rm -rf /var/lib/apt/lists/*
