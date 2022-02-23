@@ -15,6 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         zip \
         curl \
         unzip \
+        openssh-client \
     && docker-php-ext-configure gd \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
@@ -37,8 +38,6 @@ RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 # 5. Composer.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-
-
 # use your users $UID and $GID below
 RUN useradd -G www-data,root -u 1000 -d /home/developer developer
 RUN mkdir -p /home/developer/.composer
@@ -46,13 +45,12 @@ RUN chown -R developer:developer /home/developer
 
 USER developer
 
+# 6. Connect to github
+#RUN mkdir -p ~/.ssh/
+#RUN cd ~/.ssh
+#CMD ssh-keygen -q -t rsa -N ''
+
 CMD ["apache2-foreground"]
 
-#COPY docker/scripts/init_laravel.sh /tmp
-#RUN ["chmod", "+x", "/tmp/init_laravel.sh"]
-#CMD ["/tmp/init_laravel.sh"]
 
-# COPY entrypoint.sh /usr/bin
-# RUN chmod +x /usr/bin/entrypoint.sh
-# ENTRYPOINT [ "entrypoint.sh" ]
-# EXPOSE 3000
+#COPY /home/developer/KeySSH* /home/developer/.ssh/

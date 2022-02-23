@@ -65,6 +65,11 @@ bash docker/scripts/init_laravel.sh
 -  *[http://docker_man.loc](http://docker_man.loc)* Laravel in localhost
 -  *[http://docker_man.loc:8080](http://docker_man.loc:8080)* Jenkins in localhost of port 8080
 
+## Connect to GitHub from PHPApache
+- Mount known_hosts
+- Mount id_rsa (Private key) ~/.ssh/id_rsa:/home/developer/.ssh/id_rsa
+- Add deploy key of Github ~/.ssh/id_rsa.pub
+
 ## Connect to GitHub from Jenkins
 ```sh
 ssh-keygen -t rsa -f AmirJenkinsKeyLocal

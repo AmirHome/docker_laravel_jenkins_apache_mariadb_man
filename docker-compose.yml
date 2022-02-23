@@ -12,11 +12,13 @@ services:
             - "80:80"
         volumes:
             - .:/var/www/html
+            - ~/.ssh:/home/developer/.ssh
         networks:
             - net
         depends_on:
             - mysql
-
+#        secrets:
+#          - user_ssh_key
 ### MySQL Container ########################
     mysql:
         image: mariadb:latest
@@ -62,3 +64,7 @@ networks:
 
 volumes:
   mysql:
+
+#secrets:
+#  user_ssh_key:
+#    file: ~/.ssh/id_rsa

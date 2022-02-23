@@ -1,0 +1,18 @@
+node {
+
+    stage('Build') {
+
+            sh 'sh /home/scripts/build.sh'
+
+    }
+    stage('Unit Test') {
+
+            sh 'sh /home/scripts/unit_test.sh'
+
+    }
+    stage('Release') {
+
+            sh 'sh /home/scripts/release.sh'
+
+    }
+}
