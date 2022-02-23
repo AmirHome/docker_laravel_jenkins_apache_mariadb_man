@@ -26,7 +26,7 @@ Remove all docker resources and reset permission:
 ```sh
 bash docker/scripts/remove_docker_resources.sh
 sudo rm -rf ./docker_data/*
-sudo rm -rf ./src && mkdir "src"
+sudo rm -rf ./src && mkdir src
 
 sudo chown 1000:1000 ./docker_data/ -R
 sudo chown 1000:1000 /var/run/docker.sock

@@ -60,6 +60,5 @@ networks:
     name: ${APP_NAME}-net
     driver: bridge
 
-
 volumes:
   mysql:
