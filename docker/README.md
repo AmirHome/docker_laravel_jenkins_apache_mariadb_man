@@ -34,6 +34,7 @@ bash docker/scripts/remove_docker_resources.sh
 sudo systemctl stop apache2
 sudo systemctl stop mysql
 
+sudo chown -R 1000:1000 ~/.ssh/
 sudo chown 1000:1000 ./docker_data/ -R
 sudo chown 1000:1000 /var/run/docker.sock
 
@@ -66,7 +67,6 @@ bash docker/scripts/init_laravel.sh
 -  *[http://docker_man.loc:8080](http://docker_man.loc:8080)* Jenkins in localhost of port 8080
 
 ## Connect to GitHub from PHPApache
-- Mount known_hosts
 - Mount id_rsa (Private key) ~/.ssh/id_rsa:/home/developer/.ssh/id_rsa
 - Add deploy key of Github ~/.ssh/id_rsa.pub
 

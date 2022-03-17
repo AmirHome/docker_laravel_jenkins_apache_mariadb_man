@@ -16,7 +16,10 @@ RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -
         curl \
         unzip \
         openssh-client \
-    && docker-php-ext-configure gd \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install mysqli \
@@ -43,10 +46,13 @@ RUN useradd -G www-data,root -u 1000 -d /home/developer developer
 RUN mkdir -p /home/developer/.composer
 RUN chown -R developer:developer /home/developer
 
+# 6. Connect to github
+RUN mkdir -p ~/.ssh/
+RUN chown -R developer:developer ~/.ssh/
+
 USER developer
 
-# 6. Connect to github
-#RUN mkdir -p ~/.ssh/
+
 #RUN cd ~/.ssh
 #CMD ssh-keygen -q -t rsa -N ''
 

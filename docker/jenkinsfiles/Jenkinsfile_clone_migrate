@@ -1,8 +1,16 @@
-node {
+try {
+    node {
+        stage("Initial Migrate Laravel"){
+            timeout(time: 2, unit: 'MINUTES') {
 
-    stage('Initial Migrate Laravel') {
+               sh 'sh /home/scripts/init_migrate.sh'
+               currentBuild.result = "SUCCESS"
 
-            sh 'sh /home/scripts/init_migrate.sh'
-
+            }
+        }
     }
+} catch (err) {
+    echo err
+    currentBuild.result = "FAILURE"
+    // throw
 }

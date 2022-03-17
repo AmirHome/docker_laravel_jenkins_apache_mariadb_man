@@ -1,18 +1,30 @@
-node {
+try {
+    node {
 
-    stage('Build') {
+        stage('Build') {
+            timeout(time: 2, unit: 'MINUTES') {
+                sh 'sh /home/scripts/build.sh'
 
-            sh 'sh /home/scripts/build.sh'
+               currentBuild.result = "SUCCESS"
+            }
 
+        }
+        stage('Unit Test') {
+
+                sh 'sh /home/scripts/unit_test.sh'
+
+        }
+        stage('Release') {
+            timeout(time: 2, unit: 'MINUTES') {
+                sh 'sh /home/scripts/release.sh'
+
+                currentBuild.result = "SUCCESS"
+            }
+        }
     }
-    stage('Unit Test') {
 
-            sh 'sh /home/scripts/unit_test.sh'
-
-    }
-    stage('Release') {
-
-            sh 'sh /home/scripts/release.sh'
-
-    }
+} catch (err) {
+    echo err
+    currentBuild.result = "FAILURE"
+    // throw
 }
