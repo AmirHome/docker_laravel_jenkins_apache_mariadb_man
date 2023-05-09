@@ -7,7 +7,7 @@
         <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200"></a>
     </td>
     <td>
-        <a href="https://www.docker.com/" target="_blank"><img src="https://www.docker.com/sites/default/files/d8/2019-07/horizontal-logo-monochromatic-white.png" height="40"></a>
+        <a href="https://www.docker.com/" target="_blank"><img src="https://www.docker.com/wp-content/uploads/2022/01/Docker-Logo-White-RGB_Horizontal-730x189-1.png.webp" height="40"></a>
     </td>
 </tr>
 </table>
